@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Update system and install some packages
 RUN apt-get update -y \
-&& apt-get install -q -y nginx php5-fpm git curl \
+&& apt-get install -q -y nginx php5-fpm git \
 && rm -rf /var/lib/apt/lists/*
 
 # Configuration nginx et php
@@ -20,9 +20,6 @@ RUN cd /tmp \
     && rm -rf /var/www \
     && mv /tmp/Shaarli /var/www/ \
     && chown www-data:www-data /var/www -R
-
-
-#ADD ./backup/data /var/www/data
 
 VOLUME /var/www/
 
